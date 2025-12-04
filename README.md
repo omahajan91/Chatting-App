@@ -96,8 +96,10 @@ npm run build
 
 Contributions are welcome! 
 
-## 🤝 Contact
+## 📩 Contact
 
 Linkden: https://www.linkedin.com/in/om-mahajan-43805223b/
+
 Email: omrmahajan9477@gmail.com
+
 Moblie: 9922449477
