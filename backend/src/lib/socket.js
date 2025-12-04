@@ -16,5 +16,23 @@ const io = new Server(server, {
 
 io.use(socketAuthMiddleware);
 
+//This is for storing online users
+const userSocketMap = {} ;
 
-// export const socket = io;
+io.on("connection", (socket) => {
+    console.log("A user connection", socket.user.fullName);
+
+    const userId = socket.userId 
+    userSocketMap[userId] = socket.id;
+
+    // io.emit() is used to send events to all connected clients
+    io.emit("getOnlineUsers", Object.keys(userSocketMap) );
+
+    socket.on("disconnect", () => {
+        console.log("A user disconnected", socket.user.fullName);
+        delete userSocketMap[userId];
+        io.emit("getOnlineUsers", Object.keys(userSocketMap));
+    })  
+});
+
+export { io , app, server };
